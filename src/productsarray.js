@@ -3,17 +3,17 @@ const productarray = [
     {
         id:1,
         title:'sunglass',
-        price:'$3'
+        price:3
     },
     {
         id:2,
         title:'coffee',
-        price:'$3'
+        price:3
     },
     {
         id:3,
         title:'hat',
-        price:'$3'
+        price:3
     }
 ]
 

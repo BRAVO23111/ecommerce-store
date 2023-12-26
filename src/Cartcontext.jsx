@@ -64,12 +64,16 @@ export function CartProvider({ children }) {
   }
 
   function getTotalCost() {
-    let totalcost = 0;
-    cartProduct.map((cartitems) => {
-      const productdata = getproductsid(cartitems.id);
-      totalcost += productdata.price * cartitems.quantity;
+    let total = 0;
+  
+    cartProduct.map((cartItem) => {
+      const productData = getproductsid(cartItem.id);
+      total += productData.price * cartItem.quantity;
     });
+  
+    return total;
   }
+  
 
   const contextvalue = {
     items: cartProduct,

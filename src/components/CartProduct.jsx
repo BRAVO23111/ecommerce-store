@@ -8,9 +8,8 @@ const CartProduct = ({ id, quantity }) => {
     const cart = useContext(Cartcontext);
     const getProductData = getproductsid(id);
     const productPrice = getProductData.price;
-
+    
     const handleRemove = () => {
-        // Call the remove function from the context with the product ID
         cart.delfromCart(id);
     };
 
