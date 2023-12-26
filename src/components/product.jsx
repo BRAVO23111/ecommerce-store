@@ -1,33 +1,64 @@
-import React from "react";
-import { getproductsid, productarray } from "../productsarray";
+/* eslint-disable react/prop-types */
+import React, { useContext } from "react";
+import { Cartcontext } from "../Cartcontext";
 
-const Product = () => {
-  const addToCart = (productId) => {
-    // Add your logic for adding the product to the cart
-    console.log(`Product with ID ${productId} added to the cart`);
+const Product = ({ product }) => {
+  const cart = useContext(Cartcontext);
+  const productquantity = cart.getProductqty(product.id);
+
+  const handleIncrement = () => {
+    cart.addonetoCart(product.id);
+  };
+
+  const handleDecrement = () => {
+    cart.removeonefromCart(product.id);
   };
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-      {productarray.map((product, idx) => (
-        <div key={idx} className="max-w-sm rounded overflow-hidden shadow-lg">
-          <img
-            className="w-full h-48 object-cover"
-            src={`https://via.placeholder.com/400x300?text=${product.title}`} // Replace with your product image URL
-            alt={product.title}
-          />
-          <div className="px-6 py-4">
-            <h1 className="font-bold text-xl mb-2">{product.title}</h1>
-            <p className="text-gray-700 text-base">Price: {product.price}</p>
+    <div className="flex max-w-md rounded overflow-hidden shadow-lg my-4">
+      <img
+        className="w-1/2 h-48 object-cover"
+        src={`https://via.placeholder.com/400x300?text=${product.title}`} // Replace with your product image URL
+        alt={product.title}
+      />
+
+      <div className="flex-1 px-6 py-4">
+        <h1 className="font-bold text-xl mb-2">{product.title}</h1>
+        <p className="text-gray-700 text-base">Price: {product.price}</p>
+        <div className="flex items-center mt-2">
+          {productquantity > 0 && (
+            <>
+              <button
+                onClick={handleDecrement}
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded-full"
+              >
+                -
+              </button>
+              <span className="mx-2 text-lg font-bold">{productquantity}</span>
+              <button
+                onClick={handleIncrement}
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded-full"
+              >
+                +
+              </button>
+              <button
+                onClick={() => cart.delfromCart(product.id)}
+                className="ml-2 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded-full"
+              >
+                Remove
+              </button>
+            </>
+          )}
+          {productquantity === 0 && (
             <button
-            //   onClick={() => addToCart(product.id)}
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full mt-4"
+              onClick={() => cart.addonetoCart(product.id)}
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
             >
               Add to Cart
             </button>
-          </div>
+          )}
         </div>
-      ))}
+      </div>
     </div>
   );
 };
