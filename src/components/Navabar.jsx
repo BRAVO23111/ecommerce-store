@@ -17,7 +17,6 @@ const Navbarbar = () => {
           >
             Shopping cart ({productCount})
           </Link>
-          
         </div>
       </Navbar>
     </>
