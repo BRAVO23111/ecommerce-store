@@ -1,17 +1,17 @@
 const productarray = [
 
     {
-        id:1,
+        id: 'price_1ORrbZSEmwWryMmmA3zt7NxM',
         title:'sunglass',
         price:3
     },
     {
-        id:2,
+        id:'price_1ORrm5SEmwWryMmm4KWuL9Bx',
         title:'coffee',
         price:3
     },
     {
-        id:3,
+        id:'price_1ORrmySEmwWryMmmkuQC6biX',
         title:'hat',
         price:3
     }
