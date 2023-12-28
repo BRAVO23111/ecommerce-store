@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Cartcontext } from "../Cartcontext";
 
 const Product = ({ product }) => {
@@ -13,6 +13,7 @@ const Product = ({ product }) => {
   const handleDecrement = () => {
     cart.removeonefromCart(product.id);
   };
+ 
 
   return (
     <div className="flex max-w-md rounded overflow-hidden shadow-lg my-4">
